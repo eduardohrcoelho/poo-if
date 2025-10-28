@@ -32,6 +32,8 @@ public class Program {
             System.out.println("Pedido encontrado: " + achou.getNome());
         }
 
+        gerenciador.atualizarValor(2, 2000);
+        gerenciador.listar();
         scanner.close();
     }
 

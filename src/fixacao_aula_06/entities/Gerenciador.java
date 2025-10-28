@@ -48,4 +48,9 @@ public class Gerenciador{
         return null;
     }
 
+
+    public void atualizarValor(int indice, double valor){
+        Pedido pedido = buscarId(indice);
+        pedido.setValor(valor);
+    }
 }
