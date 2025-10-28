@@ -23,7 +23,11 @@ public class Program {
         System.out.println("Tarefas cadastradas: " + tarefas.size());
         tarefas.remove(0);
         System.out.println("Tarefas cadastradas: " + tarefas.size());
+        tarefas.add(new Tarefa());
 
+        for(Tarefa tarefa : tarefas){
+            System.out.println(tarefa);
+        }
         scanner.close();
     }
 }
