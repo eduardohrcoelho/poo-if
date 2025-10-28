@@ -8,66 +8,29 @@ public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        List<Pedido> pedidos = new ArrayList<>();
         Gerenciador gerenciador = new Gerenciador();
-        int op;
-        do{
-            menu();
-            op = scanner.nextInt();
-            scanner.nextLine();
-            switch(op){
-                case 1:
-                    System.out.print("Nome do pedido: ");
-                    String nome = scanner.nextLine();
-                    System.out.print("ID do pedido: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Valor: ");
-                    double valor = scanner.nextDouble();
-                    scanner.nextLine();
-                    System.out.print("Status: ");
-                    String status = scanner.nextLine();
-                    pedidos.add(new Pedido(nome, id, valor, status));
-                    break;
 
-                case 2:
-                    for(Pedido pedido : pedidos){
-                        System.out.println(pedido);
-                    }
-                    break;
+        Pedido p1 = new Pedido("Notebook", 1, 1600.00, "Preparando");
+        Pedido p2 = new Pedido("Televisão", 2, 2400.00, "Preparando");
+        Pedido p3 = new Pedido("Iphone 15", 3, 6600.00, "Pronto para entrega");
+        Pedido p4 = new Pedido("Notebook", -1, -1600.00, "Preparando");
 
-                case 3:
-                    System.out.println("Escolha uma opção: \n1 - Buscar por ID \n2 - Buscar por nome ");
-                    int op2 = scanner.nextInt();
-                    scanner.nextLine();
-                    if(op2 == 1){
-                        System.out.print("Informe o ID do pedido que está procurando (Apenas números): ");
-                        int idBusca = scanner.nextInt();
+        gerenciador.adicionar(p1);
+        gerenciador.adicionar(p2);
+        gerenciador.adicionar(p3);
 
-                    }else if(op2 == 2){
-                        System.out.print("Informe o nome do pedido que está procurando: ");
-                        nome = scanner.nextLine();
-                        Pedido pedido = gerenciador.buscaPedidoNome(nome);
-                        System.out.println(pedido);
-                    }
+        gerenciador.listar();
 
-                    break;
-
-                case 4:
-                    System.out.println("Remover");
-                    break;
-
-                case 5:
-                    System.out.println("Encerrando...");
-                    break;
-
-                default:
-                    System.out.println("Opção inválida!");
-            }
-
-        }while(op != 5);
-
-
+        gerenciador.removerPedido(2);
+        gerenciador.listar();
+        Pedido achou = gerenciador.buscaPedidoNome("Notebook");
+        if(achou != null){
+            System.out.println("Pedido encontrado: " + achou.getNome());
+        }
+        achou = gerenciador.buscarId(2);
+        if(achou != null){
+            System.out.println("Pedido encontrado: " + achou.getNome());
+        }
 
         scanner.close();
     }
