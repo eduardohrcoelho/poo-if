@@ -9,4 +9,13 @@ public class DespesaViagem extends Despesa{
         this.valorPassagem = valorPassagem;
         this.valorHospedagem = valorHospedagem;
     }
+
+    @Override
+    public double calcularTotal(){
+        return (this.valor + this.valorPassagem + this.valorHospedagem);
+    }
+
+    public String toString(){
+        return super.toString() + "\nValor da passagem: R$" + this.valorPassagem + "\nValor da hospedagem: R$" + this.valorHospedagem;
+    }
 }

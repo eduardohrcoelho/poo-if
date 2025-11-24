@@ -7,4 +7,13 @@ public class DespesaAlimentacao extends Despesa{
         super(descricao, valor);
         this.gorjeta = gorjeta;
     }
+
+    @Override
+    public double calcularTotal(){
+        return (this.valor + this.gorjeta);
+    }
+
+    public String toString(){
+        return super.toString() +  "\nGorjeta: R$" + this.gorjeta;
+    }
 }
