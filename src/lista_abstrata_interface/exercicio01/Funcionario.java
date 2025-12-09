@@ -10,4 +10,9 @@ public abstract class Funcionario {
     }
 
     public abstract double calcularSalario();
+
+    @Override
+    public String toString() {
+        return "Funcionário: " + this.nome + "\nSalario Base: " + this.salarioBase;
+    }
 }

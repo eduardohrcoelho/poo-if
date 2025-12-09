@@ -7,7 +7,7 @@ public class Gerente extends Funcionario implements Autenticavel{
 
     @Override
     public boolean autenticar() {
-        return false;
+        return true;
     }
 
     @Override
