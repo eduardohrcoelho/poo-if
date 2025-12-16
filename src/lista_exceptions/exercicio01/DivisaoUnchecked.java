@@ -22,6 +22,8 @@ public class DivisaoUnchecked {
             System.out.println("Resultado da divisão: " + divisao);
         } catch (ArithmeticException e) {
             System.out.println("Erro! Não é possível realizar divisão por zero");
+        } catch(InputMismatchException e2){
+            System.out.println("Erro! Tipo incompatível");
         }
     }
 }
