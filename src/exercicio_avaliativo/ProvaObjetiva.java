@@ -14,7 +14,7 @@ public class ProvaObjetiva extends Prova implements Avaliavel{
 
     public void setErros(int erros){
         if(erros < 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Erro ao cadastrar! O número de erros não pode ser negativo");
         }
 
         this.erros = erros;
@@ -30,29 +30,28 @@ public class ProvaObjetiva extends Prova implements Avaliavel{
 
     public double corrigir(){
         double notaFinal = this.getNotaBase();
-        int numeroErros = 0, totalErros = 0;
+        int  totalDesconto = this.erros/2;
 
-        for(int i = 0; i < this.getErros(); i++){
-            numeroErros++;
-            if(numeroErros == 2){
-                totalErros++;
-                numeroErros = 0;
-            }
-        }
-
-        if(totalErros > 0){
-            notaFinal -= (0.5*totalErros);
+        if(totalDesconto > 0){
+            notaFinal -= (0.5*totalDesconto);
         }
 
         if(podeReceberBonus()){
             notaFinal += 0.5;
         }
 
+        if(notaFinal < 0){
+            notaFinal = 0.0;
+        }
+
+        if(notaFinal > 10){
+            notaFinal = 10.0;
+        }
 
         return notaFinal;
     }
 
     public String toString(){
-        return "Aluno: " + this.getAluno() + "\nNota Final: " + corrigir() + "\nErros: " + this.getErros() + "\n";
+        return "Aluno: " + this.getAluno() + "\nNota inicial: " + this.getNotaBase()+ "\nNota Final: " + corrigir() + "\nErros: " + this.getErros() + "\n";
     }
 }
